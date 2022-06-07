@@ -56,7 +56,7 @@ enum {
 int to_loadObj(const char *fname, to_model *res);
 
 // Frees allocated memory for a loaded obj model
-void to_freeObj(to_model mdl);
+void to_freeObj(to_model *mdl);
 
 #ifdef __cplusplus
 }

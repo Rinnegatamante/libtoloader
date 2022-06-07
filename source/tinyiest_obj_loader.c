@@ -160,8 +160,8 @@ int to_loadObj(const char *fname, to_model *res) {
 	return TO_OK;
 }
 
-void to_freeObj(to_model mdl) {
-	free(mdl.pos);
-	free(mdl.texcoord);
-	free(mdl.normals);
+void to_freeObj(to_model *mdl) {
+	free(mdl->pos);
+	free(mdl->texcoord);
+	free(mdl->normals);
 }
