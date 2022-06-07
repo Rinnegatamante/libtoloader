@@ -49,7 +49,8 @@ typedef struct {
 
 enum {
 	TO_OK, // No error
-	TO_NOFILE // File not found
+	TO_NOFILE, // File not found
+	TO_NOMEM // Out of memory
 };
 
 // Loads an obj model from file

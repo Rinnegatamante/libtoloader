@@ -37,11 +37,18 @@ int to_loadObj(const char *fname, to_model *res) {
 	int32_t msize = ftell(f);
 	fseek(f, 0, SEEK_SET);
 	char *mdl = (char *)malloc(msize);
+	if (!mdl)
+		goto error_nomem;
 	fread(mdl, 1, msize, f);
 	fclose(f);
 	
 	// Initializing internal data struct
-	to_rawmesh m;
+	to_rawmesh m = {
+		.pos = NULL,
+		.texcoord =NULL,
+		.normals = NULL,
+		.faces = NULL};
+	memset(res, 0, sizeof(to_model));
 	
 	// Pre-parsing the file to allocate proper required data structs
 	int num_pos = 0, num_texcoord = 0, num_normals = 0, num_vertices = 0;
@@ -80,9 +87,21 @@ int to_loadObj(const char *fname, to_model *res) {
 		s = strstr(s + 1, "\n");
 	}
 	m.pos = (to_vec3 *)malloc(sizeof(to_vec3) * num_pos);
+	if (!m.pos) {
+		goto error_nomem;
+	}
 	m.texcoord = (to_vec2 *)malloc(sizeof(to_vec2) * num_texcoord);
+	if (!m.texcoord) {
+		goto error_nomem;
+	}
 	m.normals = (to_vec3 *)malloc(sizeof(to_vec3) * num_normals);
+	if (!m.normals) {
+		goto error_nomem;
+	}
 	m.faces = (to_ivec3 *)malloc(sizeof(to_ivec3) * num_vertices);
+	if (!m.faces) {
+		goto error_nomem;
+	}
 	
 	// Parsing the file
 	num_pos = num_texcoord = num_normals = num_vertices = 0;
@@ -137,8 +156,14 @@ int to_loadObj(const char *fname, to_model *res) {
 	
 	// Allocating final model required memory
 	res->pos = (to_vec3 *)malloc(sizeof(to_vec3) * num_vertices);
+	if (!res->pos)
+		goto error_nomem;
 	res->texcoord = (to_vec2 *)malloc(sizeof(to_vec2) * num_vertices);
+	if (!res->texcoord)
+		goto error_nomem;
 	res->normals = (to_vec3 *)malloc(sizeof(to_vec3) * num_vertices);
+	if (!res->normals)
+		goto error_nomem;
 	
 	// Constructing final model data
 	for (int i = 0; i < num_vertices; i++) {
@@ -158,6 +183,25 @@ int to_loadObj(const char *fname, to_model *res) {
 	free(m.normals);
 	free(m.pos);
 	return TO_OK;
+	
+error_nomem:
+	if (m.pos)
+		free(m.pos);
+	if (m.normals)
+		free(m.normals);
+	if (m.texcoord)
+		free(m.texcoord);
+	if (m.faces)
+		free(m.faces);
+	if (mdl)
+		free(mdl);
+	if (res->pos)
+		free(res->pos);
+	if (res->texcoord)
+		free(res->texcoord);
+	if (res->normals)
+		free(res->normals);
+	return TO_NOMEM;
 }
 
 void to_freeObj(to_model *mdl) {
