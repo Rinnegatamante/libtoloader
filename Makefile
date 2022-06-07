@@ -29,6 +29,6 @@ install: $(TARGET).a
 	@mkdir -p $(VITASDK)/$(PREFIX)/lib/
 	cp $(TARGET).a $(VITASDK)/$(PREFIX)/lib/
 	@mkdir -p $(VITASDK)/$(PREFIX)/include/
-	cp source/tinyiest_obj_loader.h $(VITASDK)/$(PREFIX)/include/
+	cp source/tiniest_obj_loader.h $(VITASDK)/$(PREFIX)/include/
 	
 samples: $(SAMPLES)
