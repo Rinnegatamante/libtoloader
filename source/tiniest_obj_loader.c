@@ -1,5 +1,5 @@
 /*
- * This file is part of Tinyiest Obj Loader
+ * This file is part of Tiniest Obj Loader
  * Copyright 2022 Rinnegatamante
  *
  * This program is free software: you can redistribute it and/or modify
@@ -19,7 +19,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "tinyiest_obj_loader.h"
+#include "tiniest_obj_loader.h"
 
 typedef struct {
 	to_vec3 *pos;

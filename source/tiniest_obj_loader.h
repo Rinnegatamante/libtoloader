@@ -1,5 +1,5 @@
 /*
- * This file is part of Tinyiest Obj Loader
+ * This file is part of Tiniest Obj Loader
  * Copyright 2022 Rinnegatamante
  *
  * This program is free software: you can redistribute it and/or modify
@@ -16,8 +16,8 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef _TINYIEST_OBJ_LOADER_H_
-#define _TINYIEST_OBJ_LOADER_H_
+#ifndef _TINIEST_OBJ_LOADER_H_
+#define _TINIEST_OBJ_LOADER_H_
 
 #ifdef __cplusplus
 extern "C" {

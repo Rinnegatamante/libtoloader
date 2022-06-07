@@ -1,5 +1,5 @@
-# Tinyiest Obj Loader
-Tinyiest Obj Loader is (yet another) WaveFront Obj models loader for C development.
+# Tiniest Obj Loader
+Tiniest Obj Loader is (yet another) WaveFront Obj models loader for C development.
 
 It's designed to be compat and easy to integrate with OpenGL code.
 

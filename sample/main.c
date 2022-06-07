@@ -1,6 +1,6 @@
 #include <vitasdk.h>
 #include <vitaGL.h>
-#include <tinyiest_obj_loader.h>
+#include <tiniest_obj_loader.h>
 
 int main() {
 	// Initializing graphics device
