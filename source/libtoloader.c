@@ -19,7 +19,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "tiniest_obj_loader.h"
+#include "libtoloader.h"
 
 typedef struct {
 	to_vec3 *pos;

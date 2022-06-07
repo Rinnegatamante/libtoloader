@@ -16,8 +16,8 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef _TINIEST_OBJ_LOADER_H_
-#define _TINIEST_OBJ_LOADER_H_
+#ifndef _LIBTOLOADER_H_
+#define _LIBTOLOADER_H_
 
 #ifdef __cplusplus
 extern "C" {
